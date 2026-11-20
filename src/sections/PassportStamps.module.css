@@ -1,0 +1,430 @@
+/* Experience · Passport stamps (176:2114) */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+  inline-size: 100%;
+  max-inline-size: var(--layout-frame-width);
+  margin-inline: auto;
+  padding-inline: var(--layout-margin);
+}
+
+.flush {
+  margin: 0;
+}
+
+/* ---------- Book ---------- */
+
+.book {
+  --book-width: 1100px; /* Passport/Book pages frame */
+  --page-height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  inline-size: min(100%, var(--book-width));
+  filter: drop-shadow(0 var(--space-24) var(--space-24) color-mix(in srgb, var(--color-text-primary) 12%, transparent));
+}
+
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  min-block-size: var(--page-height);
+  padding: var(--space-32) var(--space-36) var(--space-28);
+  border: 1px solid var(--color-border-neutral-subtle);
+  background: var(--color-bg-surface);
+  overflow: hidden;
+}
+
+.pageLeft {
+  border-start-start-radius: var(--radius-18);
+  border-end-start-radius: var(--radius-18);
+}
+
+.pageRight {
+  border-start-end-radius: var(--radius-18);
+  border-end-end-radius: var(--radius-18);
+}
+
+/* Spine shading where the pages meet. */
+.pageLeft::after,
+.pageRight::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inline-size: var(--space-36);
+  pointer-events: none;
+}
+
+.pageLeft::after {
+  inset-inline-end: 0;
+  background: linear-gradient(to left, color-mix(in srgb, var(--color-text-primary) 9%, transparent), transparent);
+}
+
+.pageRight::before {
+  inset-inline-start: 0;
+  background: linear-gradient(to right, color-mix(in srgb, var(--color-text-primary) 5%, transparent), transparent);
+}
+
+.pageBody {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.pageTop {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+/* Holder data */
+.holder {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-20);
+}
+
+.holderPhoto {
+  --photo-width: 112px; /* Figma passport photo */
+  position: relative;
+  flex-shrink: 0;
+  inline-size: var(--photo-width);
+  aspect-ratio: 112 / 140;
+  border-radius: var(--radius-6);
+  overflow: hidden;
+}
+
+.holderPhoto img {
+  object-fit: cover;
+}
+
+.fields {
+  display: grid;
+  flex: 1 0 0;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-10) var(--space-16);
+  min-inline-size: 0;
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.field dd {
+  margin: 0;
+}
+
+.mrz {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-block-start: var(--space-12);
+  border-block-start: 1px solid var(--color-border-neutral-subtle);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Contents */
+.contents {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.entries {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  inline-size: 100%;
+  padding: var(--space-10) 0;
+  border: 0;
+  border-block-end: 1px solid var(--color-border-neutral-subtle);
+  background: transparent;
+  text-align: start;
+  cursor: pointer;
+}
+
+.entry:hover .entryText > span:first-child {
+  color: var(--color-text-brand);
+}
+
+.entryText {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  min-inline-size: 0;
+}
+
+.logoBox {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--space-36);
+  block-size: var(--space-36);
+  border: 1px solid var(--color-border-neutral-subtle);
+  border-radius: var(--radius-9);
+  background: var(--color-bg-canvas);
+}
+
+.logoBoxLarge {
+  inline-size: var(--space-64);
+  block-size: var(--space-64);
+  border-radius: var(--radius-14);
+}
+
+.entryDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-8);
+  padding-block-start: var(--space-24);
+}
+
+/* Footer: page count + navigation */
+.pageFooter {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin-block-start: auto;
+}
+
+.pageCount {
+  text-align: center;
+}
+
+.pageNav {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.pageNavNext {
+  justify-self: end;
+}
+
+.pageNav:hover span {
+  color: var(--color-text-primary);
+}
+
+/* ---------- Stamps ---------- */
+
+.stampSlot {
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding-block: var(--space-40);
+}
+
+.stamp {
+  position: relative;
+  flex-shrink: 0;
+  opacity: 0.92;
+}
+
+.stampCenter {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.ringOuter,
+.ringInner,
+.orbixCenter {
+  position: absolute;
+}
+
+.ringText {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+.ringText text {
+  fill: currentColor;
+  font-family: var(--font-family-sans);
+  font-size: var(--typography-label-font-size);
+  font-weight: 500;
+  letter-spacing: var(--typography-label-letter-spacing);
+}
+
+/* Ostad — 200 × 200 */
+.stampOstad {
+  --stamp-size: 200px;
+  inline-size: var(--stamp-size);
+  block-size: var(--stamp-size);
+  color: var(--color-text-brand);
+  transform: rotate(8deg);
+}
+
+.stampOstad .ringOuter {
+  inset: 0.5%;
+}
+
+.stampOstad .ringInner {
+  inset: 12%;
+}
+
+/* Nexlent — 230 × 150 */
+.stampNexlent {
+  --stamp-width: 230px;
+  --stamp-height: 150px;
+  inline-size: var(--stamp-width);
+  block-size: var(--stamp-height);
+  border: var(--space-3) solid var(--color-text-primary);
+  border-radius: var(--radius-14);
+  transform: rotate(-5deg);
+}
+
+.nexlentInner {
+  position: absolute;
+  inset: var(--space-6);
+  border: 1px solid var(--color-text-primary);
+  border-radius: var(--radius-9);
+}
+
+.nexlentYear {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.rule {
+  display: block;
+  inline-size: var(--space-24);
+  block-size: 1px;
+  background: var(--color-text-primary);
+}
+
+/* Studio Firefly — 176 × 206 */
+.stampFirefly {
+  --stamp-width: 176px;
+  --stamp-height: 206px;
+  inline-size: var(--stamp-width);
+  block-size: var(--stamp-height);
+  background: var(--color-bg-canvas);
+  transform: rotate(4deg);
+}
+
+.perf {
+  position: absolute;
+  translate: -50% -50%;
+}
+
+.fireflyFrame {
+  position: absolute;
+  inset: 6.3% 7.4%;
+  border: 1px solid var(--color-text-brand);
+}
+
+.fireflyText {
+  gap: var(--space-4);
+}
+
+.postmark {
+  position: absolute;
+  top: 19.4%;
+  left: 22.7%;
+  inline-size: 130.7%;
+  block-size: 68%;
+}
+
+.seal {
+  position: absolute;
+  top: 28.2%;
+  left: 54.5%;
+  inline-size: 42%;
+  block-size: auto;
+}
+
+/* Orbix Studio — 220 × 220 */
+.stampOrbix {
+  --stamp-size: 220px;
+  inline-size: var(--stamp-size);
+  block-size: var(--stamp-size);
+  color: var(--color-text-primary);
+  transform: rotate(-6deg);
+}
+
+.stampOrbix .ringOuter {
+  inset: 0.45%;
+}
+
+.stampOrbix .ringInner {
+  inset: 10.9%;
+}
+
+.stampOrbix .orbixCenter {
+  inset: 13.6%;
+  inline-size: 72.7%;
+  block-size: 72.7%;
+}
+
+/* ---------- Tablet & mobile: pages stack ---------- */
+@media (max-width: 1024px) {
+  .book {
+    --page-height: 440px;
+    grid-template-columns: 1fr;
+  }
+
+  .pageLeft {
+    border-radius: var(--radius-18) var(--radius-18) 0 0;
+  }
+
+  .pageRight {
+    border-radius: 0 0 var(--radius-18) var(--radius-18);
+  }
+
+  .pageLeft::after {
+    inset: auto 0 0;
+    inline-size: auto;
+    block-size: var(--space-24);
+    background: linear-gradient(to top, color-mix(in srgb, var(--color-text-primary) 9%, transparent), transparent);
+  }
+
+  .pageRight::before {
+    inset: 0 0 auto;
+    inline-size: auto;
+    block-size: var(--space-24);
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--color-text-primary) 5%, transparent), transparent);
+  }
+}
+
+@media (max-width: 600px) {
+  .book {
+    --page-height: auto;
+  }
+
+  .page {
+    padding: var(--space-24) var(--space-20);
+  }
+
+  .holder {
+    flex-direction: column;
+  }
+
+  .stampSlot {
+    padding-block: var(--space-24);
+  }
+}

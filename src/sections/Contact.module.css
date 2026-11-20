@@ -1,0 +1,108 @@
+/* Footer · Serif invitation (176:2120) */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-120);
+  inline-size: 100%;
+  max-inline-size: var(--layout-frame-width);
+  margin-inline: auto;
+  padding: var(--space-40) var(--layout-margin);
+}
+
+.invite {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-32);
+  text-align: center;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.line {
+  display: block;
+  white-space: nowrap;
+}
+
+.email {
+  display: inline-flex;
+  padding-block-end: var(--space-6);
+  border-block-end: 1px solid var(--color-border-neutral-bold);
+  overflow-wrap: anywhere;
+  transition: border-color var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+.email:hover {
+  border-block-end-color: var(--color-border-brand);
+}
+
+.email:hover span {
+  color: var(--color-text-brand);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-24);
+  inline-size: 100%;
+  padding-block-start: var(--space-28);
+  border-block-start: 1px solid var(--color-border-neutral-subtle);
+}
+
+.links {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-32);
+}
+
+.link:hover span {
+  color: var(--color-text-primary);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1024px) {
+  .section {
+    gap: var(--space-120);
+  }
+
+  .bar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .links {
+    order: -1;
+    justify-content: center;
+    inline-size: 100%;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .section {
+    gap: var(--space-48);
+  }
+
+  .email span {
+    font-size: var(--typography-body-lg-font-size);
+    line-height: var(--typography-body-lg-line-height);
+  }
+
+  .links {
+    flex-wrap: wrap;
+    gap: var(--space-16) var(--space-24);
+  }
+
+  .bar {
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+}

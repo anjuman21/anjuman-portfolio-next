@@ -1,0 +1,8 @@
+/* Page rhythm from the Figma frame: nav sits 28px from the top, sections are
+   separated by the responsive section spacing token. */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section-y);
+  padding-block-start: var(--space-28);
+}

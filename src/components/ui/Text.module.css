@@ -1,0 +1,119 @@
+/* Text styles — one class per Figma text style ("Premium Sans / Mona Sans / …"). */
+
+.text {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  font-variation-settings: "wdth" 100;
+}
+
+/* Variants */
+.mega {
+  font-size: var(--typography-mega-font-size);
+  line-height: var(--typography-mega-line-height);
+  letter-spacing: var(--typography-mega-letter-spacing);
+  font-weight: 500;
+}
+
+.display {
+  font-size: var(--typography-display-font-size);
+  line-height: var(--typography-display-line-height);
+  letter-spacing: var(--typography-display-letter-spacing);
+  font-weight: 500;
+}
+
+.h2 {
+  font-size: var(--typography-h2-font-size);
+  line-height: var(--typography-h2-line-height);
+  letter-spacing: var(--typography-h2-letter-spacing);
+  font-weight: 500;
+}
+
+.h3 {
+  font-size: var(--typography-h3-font-size);
+  line-height: var(--typography-h3-line-height);
+  letter-spacing: var(--typography-h3-letter-spacing);
+  font-weight: 500;
+}
+
+.bodyLg {
+  font-size: var(--typography-body-lg-font-size);
+  line-height: var(--typography-body-lg-line-height);
+  letter-spacing: var(--typography-body-lg-letter-spacing);
+  font-weight: 400;
+}
+
+.body {
+  font-size: var(--typography-body-font-size);
+  line-height: var(--typography-body-line-height);
+  letter-spacing: var(--typography-body-letter-spacing);
+  font-weight: 400;
+}
+
+.label {
+  font-size: var(--typography-label-font-size);
+  line-height: var(--typography-label-line-height);
+  letter-spacing: var(--typography-label-letter-spacing);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.button {
+  font-size: var(--typography-button-font-size);
+  line-height: var(--typography-button-line-height);
+  letter-spacing: var(--typography-button-letter-spacing);
+  font-weight: 500;
+}
+
+.accentItalic {
+  font-size: var(--typography-accent-italic-font-size);
+  line-height: var(--typography-accent-italic-line-height);
+  letter-spacing: var(--typography-accent-italic-letter-spacing);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.accentItalicSm {
+  font-size: var(--typography-accent-italic-sm-font-size);
+  line-height: var(--typography-accent-italic-sm-line-height);
+  letter-spacing: var(--typography-accent-italic-sm-letter-spacing);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.accentItalicXs {
+  font-size: var(--typography-accent-italic-xs-font-size);
+  line-height: var(--typography-accent-italic-xs-line-height);
+  letter-spacing: var(--typography-accent-italic-xs-letter-spacing);
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Tones */
+.inherit {
+  color: inherit;
+}
+.primary {
+  color: var(--color-text-primary);
+}
+.secondary {
+  color: var(--color-text-secondary);
+}
+.tertiary {
+  color: var(--color-text-tertiary);
+}
+.brand {
+  color: var(--color-text-brand);
+}
+.inverse {
+  color: var(--color-text-inverse);
+}
+.inverseSecondary {
+  color: var(--color-text-inverse-secondary);
+}
+.brandOnInverse {
+  color: var(--color-text-brand-on-inverse);
+}
+
+.nowrap {
+  white-space: nowrap;
+}

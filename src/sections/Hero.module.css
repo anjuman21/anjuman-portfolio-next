@@ -1,0 +1,275 @@
+/* Hero · Giant name (176:1979) + Nav · Superscript counts (176:1958). */
+
+.srOnly {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- Nav ---------- */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-24);
+  inline-size: 100%;
+  max-inline-size: var(--layout-frame-width);
+  margin-inline: auto;
+  padding-inline: var(--layout-margin);
+}
+
+.logo {
+  flex-shrink: 0;
+}
+
+.links {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-36);
+}
+
+.link {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  white-space: nowrap;
+}
+
+.link:hover > span:first-child {
+  color: var(--color-text-brand);
+}
+
+.count {
+  vertical-align: baseline;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  flex-shrink: 0;
+}
+
+.sayHi:hover span {
+  color: var(--color-text-brand);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-30);
+  inline-size: 100%;
+  max-inline-size: var(--layout-frame-width);
+  margin-inline: auto;
+  padding-block-start: var(--space-24);
+  padding-inline: var(--space-56);
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-24);
+  inline-size: 100%;
+}
+
+.cardSlot {
+  --hero-card-width: 380px; /* Card/About width from Figma */
+  flex-shrink: 0;
+  inline-size: min(100%, var(--hero-card-width));
+}
+
+.surname {
+  flex-shrink: 0;
+}
+
+/* FlipCard: let the front face size the card; the back overlays it. */
+.flip {
+  inline-size: 100%;
+  cursor: pointer;
+  border-radius: var(--radius-28);
+}
+
+.flip [data-flip-front] {
+  position: relative !important;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-16);
+  block-size: 100%;
+  padding: var(--space-16) var(--space-16) var(--space-24);
+  border: 1px solid var(--color-border-neutral-subtle);
+  border-radius: var(--radius-28);
+  background: var(--color-bg-canvas);
+  backdrop-filter: blur(var(--space-12));
+  overflow: hidden;
+}
+
+.photo {
+  position: relative;
+  inline-size: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-thumb);
+  overflow: hidden;
+}
+
+.photo img {
+  object-fit: cover;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-inline: var(--space-8);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  inline-size: 100%;
+  padding-inline: var(--space-8);
+}
+
+.statusLeft {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+/* Figma fills this hint with a transparent paint — it only reserves space. */
+.hint {
+  color: transparent;
+}
+
+.cardBack {
+  gap: var(--space-20);
+  padding: var(--space-32) var(--space-24);
+  background: var(--color-bg-surface);
+}
+
+.facts {
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%;
+  margin: 0;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-block: var(--space-10);
+  border-block-start: 1px solid var(--color-border-neutral-subtle);
+}
+
+.fact dd {
+  margin: 0;
+}
+
+/* Bottom info row */
+.info {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-48);
+  inline-size: 100%;
+  padding-block-start: var(--space-40);
+  border-block-start: 1px solid var(--color-border-neutral-subtle);
+}
+
+.infoCol {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  min-inline-size: 0;
+  gap: var(--space-16);
+}
+
+.focus {
+  gap: var(--space-10);
+}
+
+.focusList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cta {
+  align-items: flex-end;
+  gap: var(--space-24);
+}
+
+.scrollHint {
+  white-space: pre;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1024px) {
+  .links {
+    display: none;
+  }
+
+  .hero {
+    padding-inline: var(--layout-margin);
+  }
+
+  .row {
+    flex-direction: column;
+    gap: var(--space-30);
+  }
+
+  .surname {
+    order: -1;
+    align-self: flex-end;
+  }
+
+  .info {
+    gap: var(--space-24);
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .sayHi {
+    display: none;
+  }
+
+  .hero {
+    gap: var(--space-20);
+  }
+
+  .cardSlot {
+    inline-size: 100%;
+  }
+
+  .info {
+    flex-direction: column;
+    gap: var(--space-32);
+    padding-block-start: var(--space-32);
+  }
+
+  .infoCol {
+    flex: none;
+    inline-size: 100%;
+  }
+
+  .cta {
+    align-items: flex-start;
+  }
+}

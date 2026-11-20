@@ -1,0 +1,24 @@
+/* Surface pill holding a single 18px icon (Pick a card arrows). */
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-16) var(--space-8) var(--space-14);
+  border: 1px solid var(--color-border-neutral-subtle);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-surface);
+  cursor: pointer;
+  transition:
+    transform var(--motion-duration-fast) var(--motion-ease-out),
+    border-color var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+.iconButton:hover {
+  border-color: var(--color-border-neutral-bold);
+}
+
+.iconButton:active {
+  transform: scale(0.94);
+}

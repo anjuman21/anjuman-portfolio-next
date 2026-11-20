@@ -1,0 +1,192 @@
+/* Work · Split scroll (176:1995) */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-40);
+  inline-size: 100%;
+  max-inline-size: var(--layout-frame-width);
+  margin-inline: auto;
+  padding-inline: var(--layout-margin);
+}
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-24);
+}
+
+.body {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-64);
+}
+
+/* Left: sticky detail panel */
+.details {
+  --details-width: 440px; /* Figma column width */
+  position: sticky;
+  top: var(--space-100);
+  display: flex;
+  flex-shrink: 0;
+  align-items: flex-start;
+  gap: var(--space-24);
+  inline-size: var(--details-width);
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-block-start: var(--space-8);
+}
+
+.bar {
+  display: block;
+  inline-size: var(--space-3);
+  block-size: var(--space-40);
+  border-radius: var(--radius-2);
+  background: var(--color-bg-surface);
+  transition: background-color var(--motion-duration-base) var(--motion-ease-out);
+}
+
+.barActive {
+  block-size: var(--space-80);
+  background: var(--color-bg-brand-bold);
+}
+
+.panel {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-18);
+  min-inline-size: 0;
+}
+
+.name {
+  margin: 0;
+}
+
+.meta {
+  inline-size: 100%;
+  margin: 0;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  padding-block: var(--space-10);
+  border-block-start: 1px solid var(--color-border-neutral-subtle);
+}
+
+.metaRow dd {
+  margin: 0;
+}
+
+/* Right: stacked visuals */
+.visuals {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  gap: var(--space-24);
+  min-inline-size: 0;
+}
+
+.visual {
+  position: relative;
+  inline-size: 100%;
+  aspect-ratio: 776 / 560;
+}
+
+.shot {
+  border: 1px solid var(--color-border-neutral-subtle);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.shot img {
+  object-fit: cover;
+}
+
+/* Thumb/Zentra · Name behind devices */
+.zentra {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-thumb);
+  background: var(--color-bg-surface);
+  overflow: hidden;
+}
+
+.zentraWord {
+  position: absolute;
+  top: 5%;
+  left: -5.18%;
+}
+
+.zentraDesktop {
+  position: absolute;
+  inset: 30% 17.86% -4.75% 7.14%;
+  border: 1px solid var(--color-border-neutral-bold);
+  border-radius: var(--radius-10);
+  box-shadow: 0 var(--space-20) var(--space-48) color-mix(in srgb, var(--color-text-primary) 18%, transparent);
+  overflow: hidden;
+}
+
+.zentraDesktop img,
+.zentraPhoneScreen img {
+  object-fit: cover;
+}
+
+.zentraPhone {
+  position: absolute;
+  inset: 24% 8.93% -5.5% 64.29%;
+  border-radius: var(--radius-26);
+  background: var(--color-bg-inverse);
+  box-shadow: 0 var(--space-24) var(--space-48) color-mix(in srgb, var(--color-text-primary) 30%, transparent);
+  overflow: hidden;
+}
+
+.zentraPhoneScreen {
+  position: absolute;
+  inset: var(--space-4);
+  border-radius: var(--radius-23);
+  overflow: hidden;
+}
+
+/* ---------- Tablet & mobile: stack, panel no longer sticky ---------- */
+@media (max-width: 1024px) {
+  .body {
+    flex-direction: column;
+    gap: var(--space-40);
+  }
+
+  .details {
+    position: static;
+    inline-size: 100%;
+  }
+
+  .visuals {
+    flex: none;
+    inline-size: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-16);
+  }
+
+  .details {
+    gap: var(--space-16);
+  }
+
+  .visual {
+    aspect-ratio: 350 / 300;
+  }
+}

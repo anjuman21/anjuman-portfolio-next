@@ -1,0 +1,316 @@
+/* ==========================================================================
+   Design tokens — Anjuman Sharear portfolio
+   Source: Figma "personal-Website" variables (Primitive / Semantic / Responsive).
+   Generated from Figma — edit in Figma, then regenerate. Do not hand-edit values.
+
+   Theme:       Light by default, Dark via <html data-theme="dark">.
+   Breakpoints: Desktop (default, 1440 frame) · Tablet ≤ 1024px (834 frame) · Mobile ≤ 600px (390 frame).
+   ========================================================================== */
+
+/* 1. Primitive — raw values. Use in this file only (except --space-* and --radius-*). */
+:root {
+  --color-alpha-ivory-100-70: rgb(244 238 226 / 70%);
+  --color-alpha-umber-900-70: rgb(26 23 18 / 70%);
+  --color-alpha-umber-900-8: rgb(26 23 18 / 8%);
+  --color-alpha-white-8: rgb(255 255 255 / 8%);
+
+  --color-gold-400: #e3be73;
+  --color-gold-500: #d9b26a;
+  --color-gold-600: #b8862b;
+  --color-gold-700: #9a6e1f;
+
+  --color-green-300: #9fd49a;
+  --color-green-700: #4d7c0f;
+
+  --color-ivory-50: #f8f5ee;
+  --color-ivory-100: #f4eee2;
+  --color-ivory-200: #efeadf;
+  --color-ivory-400: #e3dccb;
+  --color-ivory-500: #cfc5b0;
+
+  --color-taupe-400: #b3a994;
+  --color-taupe-500: #a69d8a;
+  --color-taupe-600: #746b5a;
+  --color-taupe-700: #615a4d;
+
+  --color-umber-700: #3b3428;
+  --color-umber-800: #2b271f;
+  --color-umber-900: #1a1712;
+  --color-umber-950: #0f0d0a;
+
+  --font-family-sans: var(--font-mona-sans, "Mona Sans"), ui-sans-serif, system-ui, sans-serif;
+
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-18: 18px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-30: 30px;
+  --space-32: 32px;
+  --space-36: 36px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+  --space-60: 60px;
+  --space-64: 64px;
+  --space-80: 80px;
+  --space-100: 100px;
+  --space-120: 120px;
+
+  --radius-2: 2px;
+  --radius-3: 3px;
+  --radius-5: 5px;
+  --radius-6: 6px;
+  --radius-9: 9px;
+  --radius-10: 10px;
+  --radius-12: 12px;
+  --radius-14: 14px;
+  --radius-18: 18px;
+  --radius-23: 23px;
+  --radius-24: 24px;
+  --radius-26: 26px;
+  --radius-28: 28px;
+  --radius-full: 999px;
+}
+
+/* 2. Semantic — Light (default). Components use these. */
+:root,
+[data-theme="light"] {
+  --color-bg-canvas: var(--color-ivory-50);
+  --color-bg-surface: var(--color-ivory-200);
+  --color-bg-inverse: var(--color-umber-900);
+  --color-bg-brand-bold: var(--color-gold-600);
+  --color-bg-inverse-overlay: var(--color-alpha-umber-900-70);
+  --color-bg-inverse-selected: var(--color-alpha-white-8);
+
+  --color-text-primary: var(--color-umber-900);
+  --color-text-secondary: var(--color-taupe-700);
+  --color-text-tertiary: var(--color-taupe-500);
+  --color-text-brand: var(--color-gold-600);
+  --color-text-inverse: var(--color-ivory-50);
+  --color-text-inverse-secondary: var(--color-taupe-400);
+  --color-text-brand-on-inverse: var(--color-gold-400);
+  --color-text-success: var(--color-green-700);
+
+  --color-border-neutral-subtle: var(--color-ivory-400);
+  --color-border-neutral-bold: var(--color-umber-900);
+  --color-border-inverse: var(--color-umber-700);
+  --color-border-brand: var(--color-gold-600);
+
+  --color-icon-primary: var(--color-umber-900);
+  --color-icon-brand: var(--color-gold-600);
+  --color-icon-inverse: var(--color-ivory-50);
+}
+
+/* 2. Semantic — Dark */
+[data-theme="dark"] {
+  --color-bg-canvas: var(--color-umber-950);
+  --color-bg-surface: var(--color-umber-900);
+  --color-bg-inverse: var(--color-ivory-100);
+  --color-bg-brand-bold: var(--color-gold-500);
+  --color-bg-inverse-overlay: var(--color-alpha-ivory-100-70);
+  --color-bg-inverse-selected: var(--color-alpha-umber-900-8);
+
+  --color-text-primary: var(--color-ivory-100);
+  --color-text-secondary: var(--color-taupe-400);
+  --color-text-tertiary: var(--color-taupe-600);
+  --color-text-brand: var(--color-gold-500);
+  --color-text-inverse: var(--color-umber-950);
+  --color-text-inverse-secondary: var(--color-taupe-700);
+  --color-text-brand-on-inverse: var(--color-gold-700);
+  --color-text-success: var(--color-green-300);
+
+  --color-border-neutral-subtle: var(--color-umber-800);
+  --color-border-neutral-bold: var(--color-ivory-100);
+  --color-border-inverse: var(--color-ivory-500);
+  --color-border-brand: var(--color-gold-500);
+
+  --color-icon-primary: var(--color-ivory-100);
+  --color-icon-brand: var(--color-gold-500);
+  --color-icon-inverse: var(--color-umber-950);
+}
+
+/* 3. Responsive — Desktop (default) */
+:root {
+  --layout-frame-width: 1440px;
+  --layout-container: 1280px;
+  --layout-margin: var(--space-80);
+  --layout-gutter: var(--space-24);
+  --layout-columns: 12;
+
+  --space-section-y: var(--space-100);
+  --space-section-inset: var(--space-80);
+
+  --radius-card: var(--radius-24);
+  --radius-thumb: var(--radius-18);
+  --radius-pill: var(--radius-full);
+
+  --typography-mega-font-size: 220px;
+  --typography-mega-line-height: 193.6px;
+  --typography-mega-letter-spacing: -13.2px;
+
+  --typography-display-font-size: 120px;
+  --typography-display-line-height: 114px;
+  --typography-display-letter-spacing: -6px;
+
+  --typography-h2-font-size: 64px;
+  --typography-h2-line-height: 64px;
+  --typography-h2-letter-spacing: -2.6px;
+
+  --typography-h3-font-size: 26px;
+  --typography-h3-line-height: 31.2px;
+  --typography-h3-letter-spacing: -0.5px;
+
+  --typography-body-lg-font-size: 22px;
+  --typography-body-lg-line-height: 31.9px;
+  --typography-body-lg-letter-spacing: -0.2px;
+
+  --typography-body-font-size: 16px;
+  --typography-body-line-height: 24px;
+  --typography-body-letter-spacing: 0px;
+
+  --typography-label-font-size: 12px;
+  --typography-label-line-height: 15.6px;
+  --typography-label-letter-spacing: 0.2px;
+
+  --typography-button-font-size: 15px;
+  --typography-button-line-height: 18px;
+  --typography-button-letter-spacing: 0px;
+
+  --typography-accent-italic-font-size: 120px;
+  --typography-accent-italic-line-height: 114px;
+  --typography-accent-italic-letter-spacing: -4.8px;
+
+  --typography-accent-italic-sm-font-size: 44px;
+  --typography-accent-italic-sm-line-height: 44px;
+  --typography-accent-italic-sm-letter-spacing: -0.9px;
+
+  --typography-accent-italic-xs-font-size: 26px;
+  --typography-accent-italic-xs-line-height: 28.6px;
+  --typography-accent-italic-xs-letter-spacing: -0.3px;
+}
+
+/* 3. Responsive — Tablet (only values that change) */
+@media (max-width: 1024px) {
+  :root {
+    --layout-frame-width: 834px;
+    --layout-container: 754px;
+    --layout-margin: var(--space-40);
+    --layout-gutter: var(--space-20);
+    --layout-columns: 8;
+
+    --space-section-y: var(--space-80);
+    --space-section-inset: var(--space-64);
+
+    --radius-thumb: var(--radius-14);
+
+    --typography-mega-font-size: 128px;
+    --typography-mega-line-height: 112.6px;
+    --typography-mega-letter-spacing: -7.7px;
+
+    --typography-display-font-size: 88px;
+    --typography-display-line-height: 83.6px;
+    --typography-display-letter-spacing: -4.4px;
+
+    --typography-h2-font-size: 48px;
+    --typography-h2-line-height: 48px;
+    --typography-h2-letter-spacing: -1.9px;
+
+    --typography-h3-font-size: 24px;
+    --typography-h3-line-height: 28.8px;
+
+    --typography-body-lg-font-size: 20px;
+    --typography-body-lg-line-height: 29px;
+
+    --typography-accent-italic-font-size: 88px;
+    --typography-accent-italic-line-height: 83.6px;
+    --typography-accent-italic-letter-spacing: -3.5px;
+
+    --typography-accent-italic-sm-font-size: 36px;
+    --typography-accent-italic-sm-line-height: 36px;
+    --typography-accent-italic-sm-letter-spacing: -0.7px;
+
+    --typography-accent-italic-xs-font-size: 24px;
+    --typography-accent-italic-xs-line-height: 26.4px;
+    --typography-accent-italic-xs-letter-spacing: -0.2px;
+  }
+}
+
+/* 3. Responsive — Mobile (only values that change) */
+@media (max-width: 600px) {
+  :root {
+    --layout-frame-width: 390px;
+    --layout-container: 350px;
+    --layout-margin: var(--space-20);
+    --layout-gutter: var(--space-16);
+    --layout-columns: 4;
+
+    --space-section-y: var(--space-64);
+    --space-section-inset: var(--space-48);
+
+    --radius-card: var(--radius-18);
+
+    --typography-mega-font-size: 76px;
+    --typography-mega-line-height: 66.9px;
+    --typography-mega-letter-spacing: -4.6px;
+
+    --typography-display-font-size: 56px;
+    --typography-display-line-height: 53.2px;
+    --typography-display-letter-spacing: -2.8px;
+
+    --typography-h2-font-size: 36px;
+    --typography-h2-line-height: 36px;
+    --typography-h2-letter-spacing: -1.4px;
+
+    --typography-h3-font-size: 22px;
+    --typography-h3-line-height: 26.4px;
+    --typography-h3-letter-spacing: -0.4px;
+
+    --typography-body-lg-font-size: 18px;
+    --typography-body-lg-line-height: 26.1px;
+
+    --typography-body-font-size: 15px;
+    --typography-body-line-height: 22.5px;
+
+    --typography-label-font-size: 11px;
+    --typography-label-line-height: 14.3px;
+
+    --typography-accent-italic-font-size: 56px;
+    --typography-accent-italic-line-height: 53.2px;
+    --typography-accent-italic-letter-spacing: -2.2px;
+
+    --typography-accent-italic-sm-font-size: 28px;
+    --typography-accent-italic-sm-line-height: 28px;
+    --typography-accent-italic-sm-letter-spacing: -0.6px;
+
+    --typography-accent-italic-xs-font-size: 20px;
+    --typography-accent-italic-xs-line-height: 22px;
+  }
+}
+
+/* 4. Motion — from docs/motion-spec.md (not Figma variables) */
+:root {
+  --motion-duration-fast: 200ms;
+  --motion-duration-base: 350ms;
+  --motion-duration-slow: 600ms;
+
+  --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --motion-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration-fast: 0ms;
+    --motion-duration-base: 0ms;
+    --motion-duration-slow: 0ms;
+  }
+}

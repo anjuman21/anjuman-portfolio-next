@@ -1,0 +1,159 @@
+/* Button primitives — Figma components Button/Select, Button/Roll, Button/Blob, Button/Marquee. */
+
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-10);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family-sans);
+  font-size: var(--typography-button-font-size);
+  line-height: var(--typography-button-line-height);
+  letter-spacing: var(--typography-button-letter-spacing);
+  font-weight: 500;
+  font-variation-settings: "wdth" 100;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  isolation: isolate;
+  transition: transform var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+/* Button/Select — solid inverse pill with trailing arrow. */
+.solid {
+  padding: var(--space-16) var(--space-30);
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+}
+
+.solid .icon {
+  transition: transform var(--motion-duration-base) var(--motion-ease-overshoot);
+}
+
+.solid:hover .icon {
+  transform: translateX(var(--space-4));
+}
+
+/* Button/Roll — label rolls up on hover, revealing the brand copy. */
+.roll {
+  padding: var(--space-18) var(--space-20) var(--space-18) var(--space-40);
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+}
+
+.rollTrack {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+}
+
+.rollLabel {
+  grid-area: 1 / 1;
+  transition: transform var(--motion-duration-base) var(--motion-ease-out);
+}
+
+.rollLabelAlt {
+  color: var(--color-text-brand);
+  transform: translateY(100%);
+}
+
+.roll:hover .rollLabel {
+  transform: translateY(-100%);
+}
+
+.roll:hover .rollLabelAlt {
+  transform: translateY(0);
+}
+
+/* Button/Blob — outline pill; a brand blob grows from the corner on hover. */
+.outline {
+  padding: var(--space-16) var(--space-40);
+  border: 1.5px solid var(--color-border-neutral-bold);
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+.outline::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 21%;
+  top: 115%;
+  width: 250%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-brand-bold);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--motion-duration-slow) var(--motion-ease-out);
+}
+
+.outline:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Button/Marquee — "Book a call ✦" loops while hovered, with faded edges. */
+.marquee {
+  inline-size: calc(var(--space-100) * 2);
+  block-size: var(--space-56);
+  padding: 0;
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+}
+
+.marqueeTrack {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  inline-size: 100%;
+}
+
+.marqueeItem {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-14);
+  padding-inline-end: var(--space-14);
+}
+
+.marqueeStar {
+  color: var(--color-text-brand);
+}
+
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset-block: 0;
+  inline-size: var(--space-40);
+  pointer-events: none;
+}
+
+.marquee::before {
+  inset-inline-start: 0;
+  background: linear-gradient(to right, var(--color-bg-inverse), transparent);
+}
+
+.marquee::after {
+  inset-inline-end: 0;
+  background: linear-gradient(to left, var(--color-bg-inverse), transparent);
+}
+
+.srOnly {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

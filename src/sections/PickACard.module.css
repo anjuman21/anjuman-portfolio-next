@@ -1,0 +1,155 @@
+/* Work · Fanned deck (176:2026) */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+  inline-size: 100%;
+  max-inline-size: var(--layout-frame-width);
+  margin-inline: auto;
+  padding-inline: var(--layout-margin);
+  overflow-x: clip;
+}
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-20);
+  inline-size: 100%;
+}
+
+.aside {
+  transform: rotate(4deg);
+  transform-origin: left bottom;
+}
+
+/* Fan stage — card geometry is relative to the card itself, so it scales cleanly. */
+.fan {
+  --fan-height: 640px; /* Figma "Fan" frame height */
+  --card-scale: 1;
+  position: relative;
+  inline-size: 100%;
+  block-size: var(--fan-height);
+}
+
+.deck {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  position: absolute;
+  z-index: calc(10 - var(--abs));
+  top: var(--space-36);
+  left: 50%;
+  /* Offsets measured from Figma: ±1 → 59% / 17% / 13°, ±2 → 115% / 33% / 26°. */
+  transform: translateX(-50%) scale(var(--card-scale)) translateX(calc(var(--k) * 58%))
+    translateY(calc(var(--abs) * 17%)) rotate(calc(var(--k) * 13deg));
+  transform-origin: center;
+  transition: transform var(--motion-duration-slow) var(--motion-ease-out);
+}
+
+.cardButton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-12);
+  padding: var(--space-12) var(--space-12) var(--space-18);
+  border: 1px solid var(--color-border-neutral-subtle);
+  border-radius: var(--radius-28);
+  background: var(--color-bg-surface);
+  box-shadow: 0 var(--space-16) var(--space-30) color-mix(in srgb, var(--color-text-primary) 12%, transparent);
+  text-align: start;
+  cursor: pointer;
+  transition: box-shadow var(--motion-duration-slow) var(--motion-ease-out);
+}
+
+.cardActive .cardButton {
+  cursor: default;
+  box-shadow: 0 var(--space-30) var(--space-60) color-mix(in srgb, var(--color-text-primary) 25%, transparent);
+}
+
+.card:not(.cardActive):hover {
+  transform: translateX(-50%) scale(var(--card-scale)) translateX(calc(var(--k) * 58%))
+    translateY(calc(var(--abs) * 17% - var(--space-12))) rotate(calc(var(--k) * 13deg));
+}
+
+.thumb {
+  --thumb-width: 316px; /* Figma thumb size */
+  --thumb-height: 330px;
+  position: relative;
+  display: block;
+  inline-size: var(--thumb-width);
+  block-size: var(--thumb-height);
+  border-radius: var(--radius-thumb);
+  overflow: hidden;
+}
+
+.thumb img {
+  object-fit: cover;
+}
+
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-inline-start: var(--space-6);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  max-inline-size: 100%;
+}
+
+.caption {
+  text-align: center;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1024px) {
+  .fan {
+    --fan-height: 520px;
+    --card-scale: 0.8;
+  }
+
+  .card {
+    top: 0;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .header {
+    flex-wrap: wrap;
+    gap: var(--space-8);
+  }
+
+  .fan {
+    --fan-height: 380px;
+    --card-scale: 0.66;
+  }
+
+  .card {
+    top: calc(var(--space-40) * -1);
+    transform: translateX(-50%) scale(var(--card-scale)) translateX(calc(var(--k) * 40%))
+      translateY(calc(var(--abs) * 12%)) rotate(calc(var(--k) * 9deg));
+  }
+
+  .card:not(.cardActive):hover {
+    transform: translateX(-50%) scale(var(--card-scale)) translateX(calc(var(--k) * 40%))
+      translateY(calc(var(--abs) * 12%)) rotate(calc(var(--k) * 9deg));
+  }
+
+  .controls {
+    inline-size: 100%;
+    justify-content: space-between;
+  }
+
+  .caption {
+    flex: 1;
+  }
+}
