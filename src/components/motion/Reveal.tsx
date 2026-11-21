@@ -34,28 +34,30 @@ export function Reveal({
   const containerRef = useRef<HTMLElement>(null);
 
   useGSAP(
-    (_, contextSafe) => {
+    () => {
       const el = containerRef.current;
-      if (!el || !contextSafe) return;
+      if (!el) return;
 
       const mm = gsap.matchMedia();
-      mm.add(MOTION_OK, () => {
-        const play = contextSafe(() => {
+      mm.add(MOTION_OK, (context) => {
+        const play = () =>
           gsap.fromTo(
             el,
             { y, opacity: 0 },
             { y: 0, opacity: 1, duration, delay, ease: "power3.out", scrollTrigger: { trigger: el, start, once: true } }
           );
-        });
 
         if (!isSiteLoading()) {
           play();
           return;
         }
-        // Hidden under the loader; start the entrance as it bursts.
+        // Hidden under the loader; start the entrance as it bursts. context.add() keeps the
+        // tween in this matchMedia context (no contextSafe here: calling it inside another
+        // active context nests the contexts in each other and GSAP recurses forever on cleanup).
         gsap.set(el, { y, opacity: 0 });
-        window.addEventListener(LOADER_DONE, play, { once: true });
-        return () => window.removeEventListener(LOADER_DONE, play);
+        const onDone = () => context.add(play);
+        window.addEventListener(LOADER_DONE, onDone, { once: true });
+        return () => window.removeEventListener(LOADER_DONE, onDone);
       });
       // Reduced motion: no tween, content stays visible.
     },
