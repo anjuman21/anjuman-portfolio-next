@@ -11,7 +11,7 @@ type ButtonProps = {
    * solid   — Button/Select: inverse pill with trailing arrow.
    * roll    — Button/Roll: label rolls to brand copy on hover.
    * outline — Button/Blob: outline pill, brand blob fills on hover.
-   * marquee — Button/Marquee: label loops sideways on hover.
+   * marquee — Button/Marquee: label loops sideways all the time.
    */
   variant?: ButtonVariant;
   /** Trailing icon (an asset path in /public). */
@@ -44,7 +44,7 @@ export function Button({ children, variant = "solid", icon, href, onClick, class
     content = (
       <>
         <span className={styles.srOnly}>{children}</span>
-        <Marquee className={styles.marqueeTrack} duration={4} playOnHover>
+        <Marquee className={styles.marqueeTrack} duration={6}>
           {[0, 1].map((i) => (
             <span key={i} className={styles.marqueeItem} aria-hidden="true">
               <span>{children}</span>

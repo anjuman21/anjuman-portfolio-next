@@ -1,4 +1,4 @@
-/* Work · Fanned deck (176:2026) */
+/* Work · Fanned deck (176:2026) — drag gallery. Motion lives in DragCarousel. */
 
 .section {
   display: flex;
@@ -24,31 +24,36 @@
   transform-origin: left bottom;
 }
 
-/* Fan stage — card geometry is relative to the card itself, so it scales cleanly. */
-.fan {
-  --fan-height: 640px; /* Figma "Fan" frame height */
-  --card-scale: 1;
-  position: relative;
+/* Stage */
+.fanWrap {
   inline-size: 100%;
-  block-size: var(--fan-height);
 }
 
-.deck {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.fan {
+  --fan-height: 560px; /* card height + room for depth */
+  --carousel-scale: 1;
+  inline-size: 100%;
+  block-size: var(--fan-height);
+  padding-block-start: var(--space-24);
+  cursor: grab;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.fan[data-dragging] {
+  cursor: grabbing;
+}
+
+.fan:focus-visible {
+  outline: 2px solid var(--color-border-brand);
+  outline-offset: var(--space-8);
+  border-radius: var(--radius-card);
 }
 
 .card {
-  position: absolute;
-  z-index: calc(10 - var(--abs));
-  top: var(--space-36);
-  left: 50%;
-  /* Offsets measured from Figma: ±1 → 59% / 17% / 13°, ±2 → 115% / 33% / 26°. */
-  transform: translateX(-50%) scale(var(--card-scale)) translateX(calc(var(--k) * 58%))
-    translateY(calc(var(--abs) * 17%)) rotate(calc(var(--k) * 13deg));
-  transform-origin: center;
-  transition: transform var(--motion-duration-slow) var(--motion-ease-out);
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
 }
 
 .cardButton {
@@ -62,18 +67,18 @@
   background: var(--color-bg-surface);
   box-shadow: 0 var(--space-16) var(--space-30) color-mix(in srgb, var(--color-text-primary) 12%, transparent);
   text-align: start;
-  cursor: pointer;
-  transition: box-shadow var(--motion-duration-slow) var(--motion-ease-out);
+  cursor: inherit;
+  transition:
+    border-color var(--motion-duration-base) var(--motion-ease-out),
+    box-shadow var(--motion-duration-slow) var(--motion-ease-out);
 }
 
-.cardActive .cardButton {
-  cursor: default;
-  box-shadow: 0 var(--space-30) var(--space-60) color-mix(in srgb, var(--color-text-primary) 25%, transparent);
-}
-
-.card:not(.cardActive):hover {
-  transform: translateX(-50%) scale(var(--card-scale)) translateX(calc(var(--k) * 58%))
-    translateY(calc(var(--abs) * 17% - var(--space-12))) rotate(calc(var(--k) * 13deg));
+/* Active card: gold edge + deeper shadow, like the reference. */
+.cardActive {
+  border-color: var(--color-border-brand);
+  box-shadow:
+    0 0 0 1px var(--color-border-brand),
+    0 var(--space-30) var(--space-60) color-mix(in srgb, var(--color-text-primary) 25%, transparent);
 }
 
 .thumb {
@@ -85,6 +90,7 @@
   block-size: var(--thumb-height);
   border-radius: var(--radius-thumb);
   overflow: hidden;
+  pointer-events: none;
 }
 
 .thumb img {
@@ -98,6 +104,10 @@
   padding-inline-start: var(--space-6);
 }
 
+.hint {
+  text-transform: uppercase;
+}
+
 .controls {
   display: flex;
   align-items: center;
@@ -109,15 +119,25 @@
   text-align: center;
 }
 
+/* New caption fades up each time the active card changes. */
+.captionText {
+  display: inline-block;
+  animation: captionIn var(--motion-duration-base) var(--motion-ease-out);
+}
+
+@keyframes captionIn {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-6));
+  }
+}
+
 /* ---------- Tablet ---------- */
 @media (max-width: 1024px) {
   .fan {
-    --fan-height: 520px;
-    --card-scale: 0.8;
-  }
-
-  .card {
-    top: 0;
+    --fan-height: 460px;
+    --carousel-scale: 0.8;
+    padding-block-start: 0;
   }
 }
 
@@ -129,19 +149,9 @@
   }
 
   .fan {
-    --fan-height: 380px;
-    --card-scale: 0.66;
-  }
-
-  .card {
-    top: calc(var(--space-40) * -1);
-    transform: translateX(-50%) scale(var(--card-scale)) translateX(calc(var(--k) * 40%))
-      translateY(calc(var(--abs) * 12%)) rotate(calc(var(--k) * 9deg));
-  }
-
-  .card:not(.cardActive):hover {
-    transform: translateX(-50%) scale(var(--card-scale)) translateX(calc(var(--k) * 40%))
-      translateY(calc(var(--abs) * 12%)) rotate(calc(var(--k) * 9deg));
+    --fan-height: 340px;
+    --carousel-scale: 0.62;
+    margin-block-start: calc(var(--space-40) * -1);
   }
 
   .controls {

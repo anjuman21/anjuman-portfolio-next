@@ -102,7 +102,7 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* Button/Marquee — "Book a call ✦" loops while hovered, with faded edges. */
+/* Button/Marquee — "Book a call ✦" loops continuously, with faded edges. */
 .marquee {
   inline-size: calc(var(--space-100) * 2);
   block-size: var(--space-56);

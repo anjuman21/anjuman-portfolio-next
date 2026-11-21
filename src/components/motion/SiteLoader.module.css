@@ -1,0 +1,55 @@
+/* Site loader: cream canvas, gold dot sphere, umber dotted counter. Tokens only. */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  color: var(--color-text-primary); /* counter dots */
+  font-family: var(--font-family-sans);
+  --loader-dot-size: var(--space-2);
+}
+
+/* Shown only while <html data-loading> is set (by the inline boot script). */
+:global(html[data-loading]) .loader {
+  display: block;
+}
+
+:global(html[data-loading]) {
+  overflow: hidden;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg-canvas);
+  transition: opacity var(--motion-duration-slow) var(--motion-ease-in-out);
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  color: var(--color-bg-brand-bold); /* sphere dots */
+}
+
+.label {
+  position: absolute;
+  inset-inline: 0;
+  top: var(--label-y, 72%);
+  display: flex;
+  justify-content: center;
+  opacity: 0; /* fades in with the counter */
+  transition: opacity var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+/* Burst: the page shows through behind the flying dots. */
+.bursting {
+  display: block;
+  pointer-events: none;
+}
+
+.bursting .backdrop,
+.bursting .label {
+  opacity: 0;
+}

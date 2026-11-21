@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button, Text } from "@/components/ui";
-import { FlipCard, Reveal } from "@/components/motion";
+import { DotField, EASE, FlipCard, Reveal, TiltCard } from "@/components/motion";
 import styles from "./Hero.module.css";
 
 // Figma: "Gold Luxe · Light · Desktop" → "Nav · Superscript counts" (176:1958) + "Hero · Giant name" (176:1979)
@@ -14,13 +14,6 @@ const NAV_LINKS = [
 ];
 
 const FOCUS = ["Design systems", "Dashboards", "Mobile apps"];
-
-const FACTS = [
-  { label: "Based in", value: "Dhaka, Bangladesh" },
-  { label: "Experience", value: "2+ years" },
-  { label: "Working at", value: "Orbix Studio" },
-  { label: "Focus", value: "Design systems, dashboards, mobile apps" },
-];
 
 function CardFront() {
   return (
@@ -52,27 +45,70 @@ function CardFront() {
   );
 }
 
+// Card back (Figma: "Card/About · Back v3"). Always light: the satin stays light in both themes.
+const STATS = [
+  { value: "2+ yrs", label: "Experience" },
+  { value: "4", label: "Stamps" },
+  { value: "1", label: "Live product" },
+];
+
 function CardBack() {
   return (
-    <div className={`${styles.card} ${styles.cardBack}`}>
-      <Text variant="label" tone="brand">
-        About me
-      </Text>
-      <Text variant="h3" tone="primary">
-        UI/UX designer turning ideas into calm, token-driven products.
-      </Text>
-      <dl className={styles.facts}>
-        {FACTS.map((fact) => (
-          <div key={fact.label} className={styles.fact}>
-            <Text as="dt" variant="label" tone="tertiary">
-              {fact.label}
+    <div className={styles.back} data-theme="light">
+      <div className={styles.backStars} aria-hidden="true" />
+      <div className={styles.backContent}>
+        <div className={styles.backTop}>
+          <div className={styles.backIdRow}>
+            <Text variant="label" tone="tertiary">
+              Designer ID · AS-2026-UX
             </Text>
-            <Text as="dd" tone="primary">
-              {fact.value}
+            <Text as="span" variant="label" tone="primary">
+              <span aria-hidden="true">✦</span>
             </Text>
           </div>
-        ))}
-      </dl>
+          <Text variant="h2" tone="primary">
+            Anjuman
+          </Text>
+          <Text variant="accentItalicXs" tone="secondary">
+            Designing since 2023
+          </Text>
+        </div>
+
+        <div className={styles.backQuote}>
+          <Text variant="label" tone="tertiary">
+            In my words
+          </Text>
+          <Text variant="bodyLg" tone="primary">
+            “A course got me started. Videos taught me the rest. Design tokens kept me hooked.”
+          </Text>
+        </div>
+
+        <dl className={styles.backStats}>
+          {STATS.map((stat) => (
+            <div key={stat.label} className={styles.backStat}>
+              <Text as="dt" variant="label" tone="tertiary">
+                {stat.label}
+              </Text>
+              <Text as="dd" variant="h3" tone="primary">
+                {stat.value}
+              </Text>
+            </div>
+          ))}
+        </dl>
+
+        <div className={styles.backBottom}>
+          <div className={styles.signature}>
+            <span className={styles.signatureMark} role="img" aria-label="Signature: Anjuman" />
+            <span className={styles.signatureLine} aria-hidden="true" />
+            <Text variant="label" tone="tertiary">
+              Signature
+            </Text>
+          </div>
+          <div className={styles.backPhoto}>
+            <Image src="/figma/hero/photo-anjuman.png" alt="" fill sizes="92px" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -113,6 +149,7 @@ export function Hero() {
       </header>
 
       <section id="top" className={styles.hero} aria-labelledby="hero-title">
+        <DotField className={styles.dots} />
         <h1 id="hero-title" className={styles.srOnly}>
           Anjuman Sharear, UI/UX designer
         </h1>
@@ -124,8 +161,10 @@ export function Hero() {
         </Reveal>
 
         <div className={styles.row}>
-          <Reveal delay={0.2} className={styles.cardSlot}>
-            <FlipCard className={styles.flip} front={<CardFront />} back={<CardBack />} />
+          <Reveal delay={0.2} className={styles.cardSlot} data-dotfield-mask="0">
+            <TiltCard className={styles.tilt} glare={false}>
+              <FlipCard className={styles.flip} trigger="hover" ease={EASE.flip} front={<CardFront />} back={<CardBack />} />
+            </TiltCard>
           </Reveal>
           <Reveal y={40} delay={0.1} className={styles.surname}>
             <Text variant="mega" tone="primary" nowrap>

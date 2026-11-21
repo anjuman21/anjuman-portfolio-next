@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Mona_Sans } from "next/font/google";
+import { SiteLoader } from "@/components/motion";
+import { LOADER_BOOT_SCRIPT } from "@/components/motion/loaderBoot";
 import "../styles/tokens.css";
 import "./globals.css";
 
@@ -18,8 +20,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-theme="light" className={monaSans.variable}>
-      <body>{children}</body>
+    // suppressHydrationWarning: the boot script sets data-loading on <html> before React hydrates.
+    <html lang="en" data-theme="light" className={monaSans.variable} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: LOADER_BOOT_SCRIPT }} />
+      </head>
+      <body>
+        <SiteLoader />
+        {children}
+      </body>
     </html>
   );
 }
