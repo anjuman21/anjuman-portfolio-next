@@ -7,11 +7,11 @@ import styles from "./Contact.module.css";
 const EMAIL = "sharearanjuman1@gmail.com";
 
 // Profile URLs aren't in the Figma frame — fill these in.
+// Resume: add { label: "Resume", href: "/resume.pdf" } once the file is ready.
 const LINKS = [
-  { label: "LinkedIn", href: "#" },
-  { label: "Behance", href: "#" },
-  { label: "Dribbble", href: "#" },
-  { label: "Resume", href: "#" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/anjuman-sharear/" },
+  { label: "Behance", href: "https://www.behance.net/anjumansharear" },
+  { label: "Dribbble", href: "https://dribbble.com/Anjumansharear" },
 ];
 
 export function Contact() {
@@ -43,7 +43,7 @@ export function Contact() {
         <Text tone="secondary">© 2026 Anjuman Sharear</Text>
         <nav aria-label="Social" className={styles.links}>
           {LINKS.map((link) => (
-            <a key={link.label} href={link.href} className={styles.link}>
+            <a key={link.label} href={link.href} className={styles.link} target="_blank" rel="noopener noreferrer">
               <Text as="span" variant="label" tone="secondary">
                 {link.label}
               </Text>

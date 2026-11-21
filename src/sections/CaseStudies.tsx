@@ -13,6 +13,8 @@ type CaseStudy = {
   description: string;
   meta: { label: string; value: string }[];
   href: string;
+  /** Button label for the link. */
+  cta: string;
 };
 
 // Zentra copy is from Figma. Go Foods / SoulSound only exist as images in the frame —
@@ -27,7 +29,8 @@ const STUDIES: CaseStudy[] = [
       { label: "Platform", value: "Web + mobile" },
       { label: "Year", value: "2026" },
     ],
-    href: "#",
+    href: "https://zentra-dashboad.vercel.app/",
+    cta: "Visit live site",
   },
   {
     name: "Go Foods",
@@ -37,7 +40,8 @@ const STUDIES: CaseStudy[] = [
       { label: "Platform", value: "Mobile" },
       { label: "Year", value: "2025" },
     ],
-    href: "#",
+    href: "https://www.behance.net/gallery/187841481/Go-foods-App-Case-study-UIUX-Design",
+    cta: "View case study",
   },
   {
     name: "SoulSound",
@@ -47,7 +51,8 @@ const STUDIES: CaseStudy[] = [
       { label: "Platform", value: "Web" },
       { label: "Year", value: "2025" },
     ],
-    href: "#",
+    href: "https://www.behance.net/gallery/231780359/SoulSound-Frequency-Based-Music-for-Inner-Peace",
+    cta: "View case study",
   },
 ];
 
@@ -131,7 +136,7 @@ export function CaseStudies() {
               ))}
             </dl>
             <Button variant="outline" href={study.href}>
-              Visit live site
+              {study.cta}
             </Button>
           </Reveal>
         </div>

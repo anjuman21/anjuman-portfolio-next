@@ -64,8 +64,15 @@ export function Button({ children, variant = "solid", icon, href, onClick, class
   }
 
   if (href) {
+    // Other sites (Dribbble, Behance, live demos) open in a new tab so visitors keep this site.
+    const external = /^https?:\/\//.test(href);
     return (
-      <a className={classes} href={href} onClick={onClick}>
+      <a
+        className={classes}
+        href={href}
+        onClick={onClick}
+        {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+      >
         {content}
       </a>
     );

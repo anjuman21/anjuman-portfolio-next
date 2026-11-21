@@ -8,19 +8,59 @@ import styles from "./PickACard.module.css";
 
 // Figma: "Work · Fanned deck" (176:2026) — now a drag gallery (cover-flow).
 
-type Card = { title: string; subtitle: string; image: string; note: string };
+type Card = {
+  title: string;
+  subtitle: string;
+  image: string;
+  note: string;
+  /** Where the card leads (Dribbble shot or live site); opens in a new tab. */
+  href: string;
+  linkLabel: string;
+};
+
+const DRIBBBLE = "View on Dribbble";
 
 const CARDS: Card[] = [
-  { title: "GridZero", subtitle: "AI finance · 2026", image: "/figma/cards/gridzero.png", note: "AI finance, dense data that still reads calm" },
-  { title: "Opsyra", subtitle: "AI automation · 2026", image: "/figma/cards/opsyra.png", note: "AI automation" },
+  {
+    title: "GridZero",
+    subtitle: "AI finance · 2026",
+    image: "/figma/cards/gridzero.png",
+    note: "AI finance, dense data that still reads calm",
+    href: "https://dribbble.com/shots/27517364-GridZero-Personal-Finance-Dashboard",
+    linkLabel: DRIBBBLE,
+  },
+  {
+    title: "Opsyra",
+    subtitle: "AI automation · 2026",
+    image: "/figma/cards/opsyra.png",
+    note: "AI automation",
+    href: "https://dribbble.com/shots/27207844-Opsyra-Automation-Chatbot-AI-Dashboard",
+    linkLabel: DRIBBBLE,
+  },
   {
     title: "Zentra",
     subtitle: "Crypto dashboard · Live",
     image: "/figma/cards/zentra.png",
     note: "Designed in Figma, shipped with Claude Code",
+    href: "https://zentra-dashboad.vercel.app/",
+    linkLabel: "Visit live site",
   },
-  { title: "Mira", subtitle: "AI travel app · 2025", image: "/figma/cards/mira.png", note: "AI travel app" },
-  { title: "Flight booking", subtitle: "iOS app · 2026", image: "/figma/cards/flight-booking.png", note: "iOS app" },
+  {
+    title: "Mira",
+    subtitle: "AI travel app · 2025",
+    image: "/figma/cards/mira.png",
+    note: "AI travel app",
+    href: "https://dribbble.com/shots/26235553-AI-Travel-Mobile-App-Mira",
+    linkLabel: DRIBBBLE,
+  },
+  {
+    title: "Flight booking",
+    subtitle: "iOS app · 2026",
+    image: "/figma/cards/flight-booking.png",
+    note: "iOS app",
+    href: "https://dribbble.com/shots/25749002-Flight-Booking-UI",
+    linkLabel: DRIBBBLE,
+  },
 ];
 
 export function PickACard() {
@@ -52,8 +92,12 @@ export function PickACard() {
             <button
               type="button"
               className={`${styles.cardButton} ${isActive ? styles.cardActive : ""}`}
-              onClick={() => setActive(index)}
-              aria-label={`${card.title}, ${card.subtitle}`}
+              onClick={() => (isActive ? window.open(card.href, "_blank", "noopener,noreferrer") : setActive(index))}
+              aria-label={
+                isActive
+                  ? `${card.title}, ${card.subtitle}: ${card.linkLabel} (opens in a new tab)`
+                  : `${card.title}, ${card.subtitle}`
+              }
               tabIndex={-1}
             >
               <span className={styles.thumb}>
@@ -80,7 +124,10 @@ export function PickACard() {
         <IconButton icon="/figma/icons/arrow-left.svg" label="Previous card" onClick={() => go(-1)} />
         <Text tone="secondary" className={styles.caption}>
           <span key={active} className={styles.captionText} aria-live="polite">
-            {current.title} · {active + 1} of {count} · {current.note}
+            {current.title} · {active + 1} of {count} · {current.note} ·{" "}
+            <a href={current.href} target="_blank" rel="noopener noreferrer" className={styles.captionLink}>
+              {current.linkLabel} ↗
+            </a>
           </span>
         </Text>
         <IconButton icon="/figma/icons/arrow-right-muted.svg" label="Next card" onClick={() => go(1)} />

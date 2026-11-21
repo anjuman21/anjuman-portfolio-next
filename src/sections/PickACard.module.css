@@ -75,6 +75,7 @@
 
 /* Active card: gold edge + deeper shadow, like the reference. */
 .cardActive {
+  cursor: pointer; /* the front card opens its shot */
   border-color: var(--color-border-brand);
   box-shadow:
     0 0 0 1px var(--color-border-brand),
@@ -117,6 +118,17 @@
 
 .caption {
   text-align: center;
+}
+
+/* "View on Dribbble ↗" after the caption. */
+.captionLink {
+  color: var(--color-text-brand);
+  text-decoration: underline;
+  text-underline-offset: var(--space-3);
+}
+
+.captionLink:hover {
+  color: var(--color-text-primary);
 }
 
 /* New caption fades up each time the active card changes. */
