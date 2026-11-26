@@ -8,6 +8,7 @@ export { TiltCard } from "./TiltCard";
 export { DragCarousel } from "./DragCarousel";
 export { DotField } from "./DotField";
 export { SiteLoader } from "./SiteLoader";
+export { SmoothScroll } from "./SmoothScroll";
 export { BookFlip, type BookLeaf } from "./BookFlip";
 export { useReducedMotion } from "./useReducedMotion";
 export { DURATION, EASE, SCRUB, LOADER_DONE } from "./config";

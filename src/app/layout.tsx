@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Mona_Sans } from "next/font/google";
-import { SiteLoader } from "@/components/motion";
+import { SiteLoader, SmoothScroll } from "@/components/motion";
 import { LOADER_BOOT_SCRIPT } from "@/components/motion/loaderBoot";
 import "../styles/tokens.css";
 import "./globals.css";
@@ -27,6 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <SiteLoader />
+        <SmoothScroll />
         {children}
       </body>
     </html>
