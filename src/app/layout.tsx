@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: LOADER_BOOT_SCRIPT }} />
       </head>
-      <GoogleTagManager gtmId="GTM-PXSM2KL3" />
+      <GoogleTagManager gtmId="GTM-NM4VDPTN" />
       <body>
         <SiteLoader />
         <SmoothScroll />
