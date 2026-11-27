@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Mona_Sans } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { SiteLoader, SmoothScroll } from "@/components/motion";
 import { LOADER_BOOT_SCRIPT } from "@/components/motion/loaderBoot";
 import "../styles/tokens.css";
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: LOADER_BOOT_SCRIPT }} />
       </head>
+      <GoogleTagManager gtmId="GTM-PXSM2KL3" />
       <body>
         <SiteLoader />
         <SmoothScroll />
