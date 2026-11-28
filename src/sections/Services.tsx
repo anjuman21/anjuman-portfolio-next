@@ -21,9 +21,9 @@ const SERVICES: Service[] = [
     title: "Design systems",
     description: "One token system, from Figma variables to code.",
     preview: {
-      image: "/figma/cards/zentra.png",
+      image: "/figma/services/design-system.png",
       title: "Design systems",
-      caption: "Zentra: one token system across desktop and mobile.",
+      caption: "Component Library: semantic tokens mapped to primitives, in light and dark.",
     },
   },
   {
